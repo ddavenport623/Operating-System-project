@@ -1,3 +1,14 @@
+#include "ctype.h"
+#include "stdbool.h"
+#include "libos.a"
+
+// ARM functions
+int print_progress(unsigned int row,
+                   unsigned int column,
+                   const char *message,
+                   unsigned int percent,
+                   unsigned int width);
+
 int main() {
     boot_win();
     while (true){
@@ -7,4 +18,12 @@ int main() {
         }
     }
     return 0;
+}
+
+void boot_win() {
+
+}
+
+int strlen(const char *s){
+
 }

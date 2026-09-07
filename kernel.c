@@ -10,6 +10,7 @@ int print_progress(unsigned int row,
                    unsigned int percent,
                    unsigned int width);
 
+// finished but untested
 int main() {
     boot_win();
     while (true){
@@ -21,7 +22,10 @@ int main() {
     return 0;
 }
 
-void boot_win() { // Progress line may be wrong but part of that is from the example being incorrect
+// Finished but untested
+// NOTES:
+// Progress line may be wrong but part of that is from the example being incorrect
+void boot_win() {
     printf("+------------------------------------------------------+\n");
     printf("|                                                      |\n");
     printf("|  [OK] Console                                        |\n");
@@ -35,6 +39,17 @@ void boot_win() { // Progress line may be wrong but part of that is from the exa
     printf("+------------------------------------------------------+\n");
 }
 
+// finished but untested
 int strlen(const char *s){
+    if(s == NULL){ // Invalid string
+        return -1;
+    }
+    
+    int len = 0;
 
+    while (s[len] != '\0'){
+        len++;
+    }
+
+    return len;
 }

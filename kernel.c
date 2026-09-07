@@ -1,5 +1,6 @@
 #include "ctype.h"
 #include "stdbool.h"
+#include "stdio.h"
 #include "libos.a"
 
 // ARM functions
@@ -20,8 +21,18 @@ int main() {
     return 0;
 }
 
-void boot_win() {
-
+void boot_win() { // Progress line may be wrong but part of that is from the example being incorrect
+    printf("+------------------------------------------------------+\n");
+    printf("|                                                      |\n");
+    printf("|  [OK] Console                                        |\n");
+    printf("|  [-]  Memory                                         |\n");
+    printf("|  [-]  Kernel                                         |\n");
+    printf("|  [-]  Interrupts                                     |\n");
+    printf("|  [-]  Processes                                      |\n");
+    printf("|                                                      |\n");
+    printf("|  Progress:                                           |\n");
+    printf("|                                                      |\n");
+    printf("+------------------------------------------------------+\n");
 }
 
 int strlen(const char *s){

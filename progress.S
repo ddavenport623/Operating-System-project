@@ -13,9 +13,13 @@ print_progress:
     str x30, [sp]
 
     ; save any registers from x19 to x28 that you may use as local variables
+    sub sp, sp, 48
     ; save x19
+    str x19, [sp + 32]
     ; save x20
+    str x20, [sp + 16]
     ; save x21
+    str x21, [sp]
 
     ; print the message using print_to() with argument for row, column, and label address
 
@@ -37,8 +41,10 @@ print_progress:
         ; call putc_to to print the "=" (or the space) at column + length of label string (in x20)
 
         ; increment column by 1
+        sub w1, w1, 1
         ; decrement count of equal signs by 1 (x19)
         ; decrement width by 1
+        sub w4, w4, 1
     ; end loop
 
 .return_with_error:

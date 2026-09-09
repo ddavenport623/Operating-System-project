@@ -14,12 +14,10 @@ DEPS = $(OBJ:.o=.d)
 all: kernel.elf
 
 # --- Link final kernel image ---
-
 kernel.elf: $(OBJ) libos.a
     $(LD) $(LDFLAGS) -o $@ $(OBJ) libos.a
 
 # --- Object file rules ---
-
 kernel.o: kernel.c
     $(CC) $(CFLAGS) -c $< -o $@
 
@@ -30,17 +28,15 @@ progress.o: progress.S
     $(CC) $(ASFLAGS) -c $< -o $@
 
 # --- Run OS in QEMU ---
-
 run:
     qemu-system-aarch64 -machine raspi3b -kernel kernel.elf
 
 # --- Debug OS in QEMU with GDB stub ---
-
 debug:
 	qemu-system-aarch64 -machine raspi3b  -S -s -kernel kernel.elf &
 	ddd --debugger 'gdb-multiarch -ex "target remote localhost:1234" -ex "break main" -ex "continue"' kernel.elf
-# --- Cleanup ---
 
+# --- Cleanup ---
 clean:
     rm -f $(OBJ) $(DEPS) kernel.elf
 

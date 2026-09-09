@@ -1,18 +1,22 @@
-# Compiler and linker (remove aarch64-linux-gnu- prefix on Mac M1/M2/M3)
+# Compiler and linker (remove prefix on Mac M1/M2/M3)
 CC     = aarch64-linux-gnu-gcc
 LD     = aarch64-linux-gnu-ld
 
-CFLAGS = -g -pedantic -Wall -Wextra -fPIC -std=gnu2x -MMD
+CFLAGS  = -g -pedantic -Wall -Wextra -fPIC -std=gnu2x -MMD
 ASFLAGS = -g -MMD
 LDFLAGS = -g -N -Ttext=0x10000
 
-# Targets
-OBJ = kernel.o boot.o progress.o
+OBJ  = kernel.o boot.o progress.o
 DEPS = $(OBJ:.o=.d)
 
-.PHONY: all clean
+.PHONY: all clean run debug
 
 all: kernel.elf
+
+# --- Link final kernel image ---
+
+kernel.elf: $(OBJ) libos.a
+    $(LD) $(LDFLAGS) -o $@ $(OBJ) libos.a
 
 # --- Object file rules ---
 
@@ -25,15 +29,20 @@ boot.o: boot.S
 progress.o: progress.S
     $(CC) $(ASFLAGS) -c $< -o $@
 
-# --- Link final kernel image ---
+# --- Run OS in QEMU ---
 
-kernel.elf: $(OBJ) libos.a
-    $(LD) $(LDFLAGS) -o $@ $(OBJ) libos.a
+run:
+    qemu-system-aarch64 -machine raspi3b -kernel kernel.elf
 
+# --- Debug OS in QEMU with GDB stub ---
+
+debug:
+	qemu-system-aarch64 -machine raspi3b  -S -s -kernel kernel.elf &
+	ddd --debugger 'gdb-multiarch -ex "target remote localhost:1234" -ex "break main" -ex "continue"' kernel.elf
 # --- Cleanup ---
 
 clean:
     rm -f $(OBJ) $(DEPS) kernel.elf
 
-# Include dependency files if they exist
+# Include dependency files
 -include $(DEPS)

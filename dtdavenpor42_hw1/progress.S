@@ -41,7 +41,7 @@ print_progress:
         ; call putc_to to print the "=" (or the space) at column + length of label string (in x20)
 
         ; increment column by 1
-        sub w1, w1, 1
+        add w1, w1, 1
         ; decrement count of equal signs by 1 (x19)
         ; decrement width by 1
         sub w4, w4, 1

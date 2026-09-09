@@ -26,7 +26,7 @@ print_progress:
     str x30, [sp]
     bl print_to ; arguments are already in the registers for args
     str sp, x30
-    str [sp + 16], x29
+    str [sp + 16], x29 ; Might need to be load instead of store
     add sp, sp, 32
 
     cmp w4, 100           ; if percent is above 100

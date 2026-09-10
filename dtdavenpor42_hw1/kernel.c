@@ -1,7 +1,7 @@
 #include "ctype.h"
 #include "stdbool.h"
 #include "stdio.h"
-#include "libos.a"
+#include "libos.h"
 
 // ARM functions
 int print_progress(unsigned int row,

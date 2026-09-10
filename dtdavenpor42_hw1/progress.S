@@ -53,14 +53,14 @@ print_progress:
     // put '=' in a local variable (say x21)
     ldr x21, = '='
 
-.loop:
+loop:
     // LOOK INTO SAVING X30 AND X29 SINCE A BRANCH IS CALLED
     cmp x19, 0       // if count of equal signs (in x19) is zero
     bne continue     // put ' ' (space) in local variable (x21)
 
     ldr x21, = ' '
 
-.continue:
+continue:
     // Should be the end of the loop
     cmp w4, 0       // if width is 0
     beq return_ok   // return (i.e. jump to .return_ok)
@@ -81,13 +81,19 @@ print_progress:
     sub w4, w4, 1   // decrement width by 1
     b loop
 
-.return_with_error:
+return_with_error:
     mov w0, 1
     b done
 
-.return_ok:
+return_ok:
     mov w0, 0
 
-.done:
+done:
     // clean up stack
+    ldr x21, [sp]
+    ldr x20, [sp, 16]
+    ldr x19, [sp, 32]
+    str x30, [sp, 48]
+    str x29, [sp, 64]
+    add sp, sp, 64
     ret

@@ -49,6 +49,7 @@ print_progress:
     ldr x0, [sp]
     ldr x29, [sp, 32]
     ldr x30, [sp, 16]
+    add sp, sp, 48
 
     // put '=' in a local variable (say x21)
     ldr x21, = '='

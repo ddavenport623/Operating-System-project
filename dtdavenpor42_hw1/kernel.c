@@ -11,7 +11,7 @@ int print_progress(unsigned int row,
                    unsigned int width);
 
 void boot_win();
-int strlen(const char*);
+int strlen(const char *);
 
 // finished but untested
 int main() {

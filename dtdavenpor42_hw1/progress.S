@@ -55,10 +55,12 @@ print_progress:
 
 .loop:
     ; LOOK INTO SAVING X30 AND X29 SINCE A BRANCH IS CALLED
-    cmp x19, 0      ; if count of equal signs (in x19) is zero
-    beq add_space    ; put ' ' (space) in local variable (x21)
+    cmp x19, 0       ; if count of equal signs (in x19) is zero
+    bne continue     ; put ' ' (space) in local variable (x21)
 
-    ; LOOK INTO SAVING X30 AND X29 SINCE A BRANCH IS CALLED
+    ldr x21, = ' '
+
+.continue:
     ; Should be the end of the loop
     cmp w4, 0       ; if width is 0
     beq return_ok   ; return (i.e. jump to .return_ok)
@@ -68,24 +70,18 @@ print_progress:
     sub sp, sp, 32
     str x29, [sp + 16]
     str x30, [sp]
-    mov x2, x21 ; Overwrites address of message but it's not used again so that's ok
+    mov x2, x21     ; Overwrites address of message but it's not used again so that's ok
     bl putc_to
     ldr x30, [sp]
     ldr x29, [sp + 16]
     add sp, sp, 32
 
-    ; LOOK INTO SAVING X30 AND X29 SINCE A BRANCH IS CALLED
     add w1, w1, 1   ; increment column by 1
     sub x19, x19, 1 ; decrement count of equal signs by 1 (x19)
     sub w4, w4, 1   ; decrement width by 1
     b loop
 
-.add_space: ; put ' ' (space) in local variable (x21)
-    ldr x21, = ' ' ; Highly doubt this is correct but I'll fix it later
-    ret
-
 .return_with_error:
-    ; LOOK INTO SAVING X30 AND X29 SINCE A BRANCH IS CALLED
     mov w0, 1
     b done
 

@@ -29,17 +29,17 @@ int main() {
 // NOTES:
 // Progress line may be wrong but part of that is from the example being incorrect
 void boot_win() {
-    print_to(0, 0, "+------------------------------------------------------+\n");
-    print_to(1, 0, "|                                                      |\n");
-    print_to(2, 0, "|  [OK] Console                                        |\n");
-    print_to(3, 0, "|  [-]  Memory                                         |\n");
-    print_to(4, 0, "|  [-]  Kernel                                         |\n");
-    print_to(5, 0, "|  [-]  Interrupts                                     |\n");
-    print_to(6, 0, "|  [-]  Processes                                      |\n");
-    print_to(7, 0, "|                                                      |\n");
-    print_to(8, 0, "|  Progress:                                           |\n");
-    print_to(9, 0, "|                                                      |\n");
-    print_to(10, 0, "+------------------------------------------------------+\n");
+    print_to(11, 0, "+------------------------------------------------------+\n");
+    print_to(12, 0, "|                                                      |\n");
+    print_to(13, 0, "|  [OK] Console                                        |\n");
+    print_to(14, 0, "|  [-]  Memory                                         |\n");
+    print_to(15, 0, "|  [-]  Kernel                                         |\n");
+    print_to(16, 0, "|  [-]  Interrupts                                     |\n");
+    print_to(17, 0, "|  [-]  Processes                                      |\n");
+    print_to(18, 0, "|                                                      |\n");
+    print_to(19, 0, "|  Progress:                                           |\n");
+    print_to(20, 0, "|                                                      |\n");
+    print_to(21, 0, "+------------------------------------------------------+\n");
 }
 
 // finished but untested

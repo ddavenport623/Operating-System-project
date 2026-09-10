@@ -34,8 +34,9 @@ print_progress:
 
     // calculate the the number of '=' to draw using mul and udiv  /* (percent x width)/100 */
     // /* leave answer is a register acting as a local variable, say x19 */
-    mul x19, w3, w4       // percent x width
-    udiv x19, x19, 100    // above divided by 100
+    mul x19, x3, x4       // percent x width
+    ldr x5, 100
+    udiv x19, x19, x5    // above divided by 100
 
     // call strlen() on label address  put in a register, say x20 */
     sub sp, sp, 48

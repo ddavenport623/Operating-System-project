@@ -15,21 +15,21 @@ all: kernel.elf
 
 # --- Link final kernel image ---
 kernel.elf: $(OBJ) libos.a
-    $(LD) $(LDFLAGS) -o $@ $(OBJ) libos.a
+	$(LD) $(LDFLAGS) -o $@ $(OBJ) libos.a
 
 # --- Object file rules ---
 kernel.o: kernel.c
-    $(CC) $(CFLAGS) -c $< -o $@
+	$(CC) $(CFLAGS) -c $< -o $@
 
 boot.o: boot.S
-    $(CC) $(ASFLAGS) -c $< -o $@
+	$(CC) $(ASFLAGS) -c $< -o $@
 
 progress.o: progress.S
-    $(CC) $(ASFLAGS) -c $< -o $@
+	$(CC) $(ASFLAGS) -c $< -o $@
 
 # --- Run OS in QEMU ---
 run:
-    qemu-system-aarch64 -machine raspi3b -kernel kernel.elf
+	qemu-system-aarch64 -machine raspi3b -kernel kernel.elf
 
 # --- Debug OS in QEMU with GDB stub ---
 debug:
@@ -38,7 +38,7 @@ debug:
 
 # --- Cleanup ---
 clean:
-    rm -f $(OBJ) $(DEPS) kernel.elf
+	rm -f $(OBJ) $(DEPS) kernel.elf
 
 # Include dependency files
 -include $(DEPS)

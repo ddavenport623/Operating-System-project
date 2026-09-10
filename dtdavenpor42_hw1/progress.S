@@ -1,4 +1,6 @@
 .extern strlen
+.extern print_to
+.extern putc_to
 .global print_progress
 
 print_progress:

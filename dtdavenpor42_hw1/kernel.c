@@ -30,16 +30,16 @@ int main() {
 // Progress line may be wrong but part of that is from the example being incorrect
 void boot_win() {
     print_to(0, 0, "+------------------------------------------------------+\n");
-    printf(1, 0, "|                                                      |\n");
-    printf(2, 0, "|  [OK] Console                                        |\n");
-    printf(3, 0, "|  [-]  Memory                                         |\n");
-    printf(4, 0, "|  [-]  Kernel                                         |\n");
-    printf(5, 0, "|  [-]  Interrupts                                     |\n");
-    printf(6, 0, "|  [-]  Processes                                      |\n");
-    printf(7, 0, "|                                                      |\n");
-    printf(8, 0, "|  Progress:                                           |\n");
-    printf(9, 0, "|                                                      |\n");
-    printf(10, 0, "+------------------------------------------------------+\n");
+    print_to(1, 0, "|                                                      |\n");
+    print_to(2, 0, "|  [OK] Console                                        |\n");
+    print_to(3, 0, "|  [-]  Memory                                         |\n");
+    print_to(4, 0, "|  [-]  Kernel                                         |\n");
+    print_to(5, 0, "|  [-]  Interrupts                                     |\n");
+    print_to(6, 0, "|  [-]  Processes                                      |\n");
+    print_to(7, 0, "|                                                      |\n");
+    print_to(8, 0, "|  Progress:                                           |\n");
+    print_to(9, 0, "|                                                      |\n");
+    print_to(10, 0, "+------------------------------------------------------+\n");
 }
 
 // finished but untested

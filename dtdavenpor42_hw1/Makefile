@@ -1,31 +1,31 @@
-# Compiler and linker (remove prefix on Mac M1/M2/M3)
-CC     = aarch64-linux-gnu-gcc
-LD     = aarch64-linux-gnu-ld
+# # Compiler and linker (remove prefix on Mac M1/M2/M3)
+# CC     = aarch64-linux-gnu-gcc
+# LD     = aarch64-linux-gnu-ld
 
-CFLAGS  = -g -pedantic -Wall -Wextra -fPIC -std=gnu2x -MMD
-ASFLAGS = -g -MMD
-LDFLAGS = -g -N -Ttext=0x10000
+# CFLAGS  = -g -pedantic -Wall -Wextra -fPIC -std=gnu2x -MMD
+# ASFLAGS = -g -MMD
+# LDFLAGS = -g -N -Ttext=0x10000
 
-OBJ  = kernel.o boot.o progress.o
-DEPS = $(OBJ:.o=.d)
+# OBJ  = kernel.o boot.o progress.o
+# DEPS = $(OBJ:.o=.d)
 
 .PHONY: all clean run debug
 
 all: kernel.elf
 
 # --- Link final kernel image ---
-kernel.elf: $(OBJ) libos.a
-	$(LD) $(LDFLAGS) -o $@ $(OBJ) libos.a
+kernel.elf: libos.a kernel.o boot.o progress.o
+	aarch64-linux-gnu-ld -g -N -Ttext=0x10000 -o kernel.elf kernel.o boot.o progress.o libos.a
 
 # --- Object file rules ---
 kernel.o: kernel.c
-	$(CC) $(CFLAGS) -c $< -o $@
+	aarch64-linux-gnu-gcc -g -pedantic -Wall -Wextra -fPIC -std=gnu2x -MMD -c kernel.c -o kernel.o
 
 boot.o: boot.S
-	$(CC) $(ASFLAGS) -c $< -o $@
+	aarch64-linux-gnu-gcc -g -MMD -c boot.S -o boot.o
 
 progress.o: progress.S
-	$(CC) $(ASFLAGS) -c $< -o $@
+	aarch64-linux-gnu-gcc -g -MMD -c progress.S -o progress.o
 
 # --- Run OS in QEMU ---
 run:
@@ -38,7 +38,7 @@ debug:
 
 # --- Cleanup ---
 clean:
-	rm -f $(OBJ) $(DEPS) kernel.elf
+	rm -f kernel.o boot.o progress.o kernel.d boot.d progress.d kernel.elf
 
 # Include dependency files
 -include $(DEPS)

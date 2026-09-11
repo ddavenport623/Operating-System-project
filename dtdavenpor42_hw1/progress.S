@@ -16,7 +16,7 @@ print_progress:
     str x30, [sp]
 
     // save any registers from x19 to x28 that you may use as local variables
-    sub sp, sp, 48 // Grows by 16 per register saved
+    sub sp, sp, 48        // Grows by 16 per register saved
     str x19, [sp, 32]
     str x20, [sp, 16]
     str x21, [sp]
@@ -38,7 +38,7 @@ print_progress:
     // /* leave answer is a register acting as a local variable, say x19 */
     mul x19, x3, x4       // percent x width
     ldr x5, 100
-    udiv x19, x19, x5    // above divided by 100
+    udiv x19, x19, x5     // above divided by 100
 
     // call strlen() on label address  put in a register, say x20 */
     sub sp, sp, 48
@@ -57,11 +57,10 @@ print_progress:
     ldr x21, = '='
 
 loop:
-    // LOOK INTO SAVING X30 AND X29 SINCE A BRANCH IS CALLED
-    cmp x19, 0       // if count of equal signs (in x19) is zero
-    bne continue     // put ' ' (space) in local variable (x21)
+    cmp x19, 0     // if count of equal signs (in x19) is zero
+    bne continue    
 
-    ldr x21, = ' '
+    ldr x21, = ' ' // put ' ' (space) in local variable (x21)
 
 continue:
     // Should be the end of the loop
@@ -96,7 +95,7 @@ done:
     ldr x21, [sp]
     ldr x20, [sp, 16]
     ldr x19, [sp, 32]
-    str x30, [sp, 48]
-    str x29, [sp, 64]
+    ldr x30, [sp, 48]
+    ldr x29, [sp, 64]
     add sp, sp, 64
     ret

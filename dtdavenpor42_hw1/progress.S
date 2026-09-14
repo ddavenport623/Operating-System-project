@@ -78,7 +78,7 @@ continue:
     bl putc_to
 
     add x23, x23, 1 // increment column by 1
-    sub x19, x19, 1 // decrement count of equal signs by 1 (x19)
+    add x19, x19, 1 // decrement count of equal signs by 1 (x19)
     sub x26, x26, 1 // decrement width by 1
     b loop
 

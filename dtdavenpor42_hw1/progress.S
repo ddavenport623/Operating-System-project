@@ -90,10 +90,15 @@ return_ok:
 
 done:
     // clean up stack
-    ldr x21, [sp]
-    ldr x20, [sp, 16]
-    ldr x19, [sp, 32]
-    ldr x30, [sp, 48]
-    ldr x29, [sp, 64]
-    add sp, sp, 64
+    ldr x26, [sp]
+    ldr x25, [sp, 16]
+    ldr x24, [sp, 32]
+    ldr x23, [sp, 48]
+    ldr x22, [sp, 64]
+    ldr x21, [sp, 80]
+    ldr x20, [sp, 96]
+    ldr x19, [sp, 112]
+    ldr x30, [sp, 128]
+    ldr x29, [sp, 144]
+    add sp, sp, 160
     ret

@@ -54,6 +54,7 @@ print_progress:
     mov x0, x24           // Should move the adr of message into arg
     bl strlen
     mov x20, x0           // Should be return length of string from strlen
+    add x23, x23, x20
 
     // put '=' in a local variable (say x21)
     mov x21, '='

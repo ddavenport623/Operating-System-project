@@ -21,7 +21,7 @@ int main() {
         for(int perc = 10; perc <= 100; perc += 10){
             print_progress(19, 4, message, perc, 10); // row, column, message, percent, width
             wait_msec(500000); // Waits half a second
-            wait_msec(500000); // Waits half a second
+            // wait_msec(500000); // Waits half a second
         }
     }
     return 0;

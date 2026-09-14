@@ -31,11 +31,11 @@ print_progress:
     str x26, [sp]
 
     // Save args in higher registers
-    mov x22, x0           // row
-    mov x23, x1           // column
+    mov x22, w0           // row
+    mov x23, w1           // column
     mov x24, x2           // addr of label
-    mov x25, x3           // percent
-    mov x26, x4           // width
+    mov x25, w3           // percent
+    mov x26, w4           // width
 
     // print the message using print_to() with argument for row, column, and label address
     // Save registers x29 and x30
@@ -60,7 +60,7 @@ print_progress:
     mov x21, '='
 
 loop:
-    cmp x19, 0     // if count of equal signs (in x19) is zero
+    cmp x19, 0   // if count of equal signs (in x19) is zero
     bne continue    
 
     mov x21, ' ' // put ' ' (space) in local variable (x21)

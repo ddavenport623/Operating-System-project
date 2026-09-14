@@ -15,7 +15,6 @@ int strlen(const char *);
 
 char message[11] = "Progress: ";
 
-// finished but untested
 int main() {
     boot_win();
     while (true){
@@ -27,9 +26,6 @@ int main() {
     return 0;
 }
 
-// Finished but untested
-// NOTES:
-// Progress line may be wrong but part of that is from the example being incorrect
 void boot_win() {
     print_to(11, 1, "+------------------------------------------------------+\n");
     print_to(12, 1, "|                                                      |\n");
@@ -44,7 +40,6 @@ void boot_win() {
     print_to(21, 1, "+------------------------------------------------------+\n");
 }
 
-// finished but untested
 int strlen(const char *s){
     if(s == NULL){ // Invalid string
         return -1;

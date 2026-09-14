@@ -54,7 +54,7 @@ print_progress:
     mov x0, x24           // Should move the adr of message into arg
     bl strlen
     mov x20, x0           // Should be return length of string from strlen
-    // add x23, x23, x20
+    add x23, x23, x20
 
     // put '=' in a local variable (say x21)
     mov x21, '='
@@ -72,10 +72,20 @@ continue:
 
     // call putc_to to print the "=" (or the space) at column + length of label string (in x20)
     // args = row, column, char
+    sub sp, sp, 48
+    str x21, [sp, 32]
+    str x22, [sp, 16]
+    str x23, [sp]
+
     mov x0, x22
     mov x1, x23
     mov x2, x21
     bl putc_to
+
+    ldr x23, [sp]
+    ldr x22, [sp, 16]
+    ldr x21, [sp, 32]
+    add sp, sp, 48
 
     add x23, x23, 1 // increment column by 1
     sub x19, x19, 1 // decrement count of equal signs by 1 (x19)

@@ -61,7 +61,7 @@ print_progress:
 
 loop:
     cmp x19, 0   // if count of equal signs (in x19) is zero
-    bhi continue    
+    bgt continue    
 
     mov x21, ' ' // put ' ' (space) in local variable (x21)
 

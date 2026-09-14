@@ -98,7 +98,9 @@ done:
     ldr x21, [sp, 80]
     ldr x20, [sp, 96]
     ldr x19, [sp, 112]
-    ldr x30, [sp, 128]
-    ldr x29, [sp, 144]
-    add sp, sp, 160
+    add sp, sp, 128
+
+    ldr x30, [sp]
+    ldr x29, [sp, 16]
+    add sp, sp, 32
     ret

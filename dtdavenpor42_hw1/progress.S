@@ -54,14 +54,14 @@ print_progress:
     mov x0, x24           // Should move the adr of message into arg
     bl strlen
     mov x20, x0           // Should be return length of string from strlen
-    add x23, x23, x20
+    // add x23, x23, x20
 
     // put '=' in a local variable (say x21)
     mov x21, '='
 
 loop:
-    cmp x19, 0   // if count of equal signs (in x19) is zero
-    bgt continue    
+    cmp x19, 0   // if count of equal signs (in x19) is zero or lower
+    bgt continue
 
     mov x21, ' ' // put ' ' (space) in local variable (x21)
 

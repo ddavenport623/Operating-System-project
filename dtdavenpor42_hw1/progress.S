@@ -20,7 +20,7 @@ print_progress:
     str x30, [sp]
 
     // save any registers from x19 to x28 that you may use as local variables
-    sub sp, sp, 128        // Grows by 16 per register saved
+    sub sp, sp, 128       // Grows by 16 per register saved
     str x19, [sp, 112]
     str x20, [sp, 96]
     str x21, [sp, 80]
@@ -31,27 +31,27 @@ print_progress:
     str x26, [sp]
 
     // Save args in higher registers
-    mov x22, x0 // row
-    mov x23, x1 // column
-    mov x24, x2 // addr of label
-    mov x25, x3 // percent
-    mov x26, x4 // width
+    mov x22, x0           // row
+    mov x23, x1           // column
+    mov x24, x2           // addr of label
+    mov x25, x3           // percent
+    mov x26, x4           // width
 
     // print the message using print_to() with argument for row, column, and label address
     // Save registers x29 and x30
     bl print_to           // arguments are already in the registers for args
 
-    cmp w4, 100           // if percent is above 100
+    cmp x25, 100          // if percent is above 100
     bgt return_with_error // then return 1  /* error, called with bad parameters */
 
     // calculate the the number of '=' to draw using mul and udiv  /* (percent x width)/100 */
     // /* leave answer is a register acting as a local variable, say x19 */
-    mul x19, x3, x4       // percent x width
+    mul x19, x25, x26     // percent x width
     mov x5, 100
     udiv x19, x19, x5     // above divided by 100
 
     // call strlen() on label address  put in a register, say x20 */
-    mov x0, x24            // Should move the adr of message into arg
+    mov x0, x24           // Should move the adr of message into arg
     bl strlen
     mov x20, x0           // Should be return length of string from strlen
 

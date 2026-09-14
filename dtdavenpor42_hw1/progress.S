@@ -66,7 +66,7 @@ loop:
 
 continue:
     // Should be the end of the loop
-    cmp w4, 0       // if width is 0
+    cmp x26, 0      // if width is 0
     beq return_ok   // return (i.e. jump to .return_ok)
 
     // call putc_to to print the "=" (or the space) at column + length of label string (in x20)
@@ -76,9 +76,9 @@ continue:
     mov x2, x21     // Overwrites address of message but it's not used again so that's ok
     bl putc_to
 
-    add w1, w1, 1   // increment column by 1
+    add x23, x23, 1 // increment column by 1
     sub x19, x19, 1 // decrement count of equal signs by 1 (x19)
-    sub w4, w4, 1   // decrement width by 1
+    sub x26, x26, 1 // decrement width by 1
     b loop
 
 return_with_error:

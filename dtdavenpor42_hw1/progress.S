@@ -73,7 +73,7 @@ continue:
     // args = row, column, char
     mov x0, x22
     mov x1, x23
-    mov x2, x21     // Overwrites address of message but it's not used again so that's ok
+    mov x2, x21
     bl putc_to
 
     add x23, x23, 1 // increment column by 1

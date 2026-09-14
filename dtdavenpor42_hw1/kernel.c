@@ -13,7 +13,7 @@ int print_progress(unsigned int row,
 void boot_win();
 int strlen(const char *);
 
-char* message = "Progress: ";
+char message[11] = "Progress: ";
 
 // finished but untested
 int main() {

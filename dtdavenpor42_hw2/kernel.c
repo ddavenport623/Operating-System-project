@@ -20,12 +20,12 @@ void ready_to_run();
 void q_init(Queue_t *);
 
 // Constants
-#define MAX_PROCESSES 10
+#define _MAX_PROCESSES 10
 
 // Global Variables
 char message[11] = "Progress: ";
 PCB_t * pcb_free_list;
-PCB_t pcbs [MAX_PROCESSES];
+PCB_t pcbs [_MAX_PROCESSES];
 // STOPPED HERE!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
 int main(){

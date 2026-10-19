@@ -1,9 +1,15 @@
 #include "ctype.h"
 #include "stdbool.h"
 #include "stdio.h"
+
 #include "libos.h"
 #include "libos.a"
+#include "helper.c"
+#include "init.h"
+#include "stack.h"
+#include "kernel.h"
 #include "process.h"
+// #include "process.h"
 
 // ARM functions
 int print_progress(unsigned int row,
@@ -15,18 +21,11 @@ int print_progress(unsigned int row,
 // Function prototypes
 void boot_win();
 int strlen(const char *);
-int spawn_process(int (*pfun) ());
 void ready_to_run();
-void q_init(Queue_t *);
-
-// Constants
-#define _MAX_PROCESSES 10
-
-// Global Variables
-char message[11] = "Progress: ";
-PCB_t * pcb_free_list;
-PCB_t pcbs [_MAX_PROCESSES];
-// STOPPED HERE!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+int p1();
+int p2();
+int p3();
+int p4();
 
 int main(){
     init();
@@ -50,53 +49,6 @@ int main(){
 
     ready_to_run();
     restore_context();
-}
-
-void init(){
-    boot_win();
-
-    // Console
-    print_progress(); // Console 0%
-    waitSec(1);
-    uart_init(); // CONFIRM LIBRARY WORKS
-    print_progress(); // Console 50%
-    waitSec(1);
-    lfb_init(); // CONFIRM LIBRARY WORKS
-    print_progress(); // Console 100%
-    waitSec(1);
-    // Change to [OK] Console
-
-    // Memory
-    print_progress(); // Memory 0%
-    waitSec(1);
-    init_pcb_heap(); // NEED TO WRITE
-    print_progress(); // Memory 50%
-    waitSec(1);
-    init_stack_heap(); // NEED TO WRITE
-    print_progress(); // Memory 100%
-    // Change to [OK] Memory
-    
-    // Kernel
-    print_progress(); // Kernel 0%
-    waitSec(1);
-    q_init(Ready_q); // Need to write
-    print_progress(); // Kernel 100%
-    waitSec(1);
-
-    return;
-}
-
-// Converts seconds to microseconds
-void waitSec(int sec){
-    wait_msec(sec * 1000000);
-}
-
-// Checks if num is zero
-bool isZero(int num){
-    if (num == 0){
-        return true;
-    }
-    return false;
 }
 
 void boot_win() {
@@ -125,4 +77,39 @@ int strlen(const char *s){
     }
 
     return len;
+}
+
+int p1(){
+    // begin
+    //   print the message "Process 1: " at row 11, 
+    //        three spaces left of the boot_win() box
+    //   loop infinitely
+    //     loop i from 0 to 9
+    //        use putc_to to print the character i 
+    //           immediately after the ": " in the 
+    //           above message 
+    //        /* convert i to a character by adding
+    //           ' ' (a spaced) to it: i + ' '      */
+    //        call dispatch()
+    //     end
+    //   end  
+    // end
+}
+
+int p2(){
+    // The same for p1, but print "Process 2: 0"
+    // and the message should be printed 2 rows
+    // below p1's output.
+}
+
+int p3(){
+    // Now create two more functions for p3 and p4, but begin
+    // printing at column that is 10 columns after p1's (and p2's)
+    // output. See the video for how the running OS should look.
+}
+
+int p4(){
+    // Now create two more functions for p3 and p4, but begin
+    // printing at column that is 10 columns after p1's (and p2's)
+    // output. See the video for how the running OS should look.
 }

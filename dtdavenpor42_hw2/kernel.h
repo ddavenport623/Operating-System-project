@@ -1,10 +1,15 @@
+#pragma once
+
 #include "pcb.h"
+#include "stack.h"
+#include "queue.h"
 
 // Constants
 #define _MAX_PROCESSES 10
-#define _STACK_SIZE 1024
 
 // Global Variables
-char message[11] = "Progress: ";
-PCB_t * pcb_free_list;
-PCB_t Pcbs [_MAX_PROCESSES];
+extern PCB_t * pcb_free_list;
+extern PCB_t Pcbs [_MAX_PROCESSES];
+extern Stack_t * Stack_free_list;
+extern Stack_t Stacks[_MAX_PROCESSES];
+extern PCB_Q_t Ready_q;

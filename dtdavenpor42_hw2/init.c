@@ -1,6 +1,4 @@
 #include "init.h"
-#include "helper.c"
-#include "kernel.h"
 
 // all initialization functions
 
@@ -8,41 +6,55 @@ void init(){
     boot_win();
 
     // Console
-    print_progress(); // Console 0%
+    print_progress(19, 4, "Console: ", 0, 10);  // Console 0%
     waitSec(1);
     uart_init(); // CONFIRM LIBRARY WORKS
-    print_progress(); // Console 50%
+    print_progress(19, 4, "Console: ", 50, 10); // Console 50%
     waitSec(1);
     lfb_init(); // CONFIRM LIBRARY WORKS
-    print_progress(); // Console 100%
+    print_progress(19, 4, "Console: ", 100, 10); // Console 100%
     waitSec(1);
-    // Change to [OK] Console
+    print_to(13, 5, "OK"); // Change to [OK] Console
 
     // Memory
-    print_progress(); // Memory 0%
+    print_progress(19, 4, "Memory: ", 0, 10); // Memory 0%
     waitSec(1);
-    init_pcb_heap(); // NEED TO WRITE
-    print_progress(); // Memory 50%
+    init_pcb_heap();
+    print_progress(19, 4, "Memory: ", 50, 10); // Memory 50%
     waitSec(1);
-    init_stack_heap(); // NEED TO WRITE
-    print_progress(); // Memory 100%
-    // Change to [OK] Memory
+    init_stack_heap();
+    print_progress(19, 4, "Memory: ", 100, 10); // Memory 100%
+    print_to(14, 5, "OK"); // Change to [OK] Memory
     
     // Kernel
-    print_progress(); // Kernel 0%
+    print_progress(19, 4, "Kernel: ", 0, 10); // Kernel 0%
     waitSec(1);
-    q_init(Ready_q); // Need to write
-    print_progress(); // Kernel 100%
+    q_init(&Ready_q); // Need to write
+    print_progress(19, 4, "Kernel: ", 100, 10); // Kernel 100%
     waitSec(1);
 
     return;
 }
 
 void init_pcb_heap(){
-    // Create a linked list of PCBs from the Pcb array
-    // Each element should be the addr of one of the PCBs in the array
+    for (int i=0; i < _MAX_PROCESSES - 1; i++){
+        Pcbs[i].pcb = &Pcbs[i+1];
+    }
+    Pcbs[_MAX_PROCESSES - 1].pcb = 0;
+
+    pcb_free_list = &Pcbs[0];
 }
 
 void init_stack_heap(){
-    // Similar to pcb version
+    for (int i=0; i < _MAX_PROCESSES - 1; i++){
+        Stacks[i].next = &Stacks[i+1];
+    }
+    Stacks[_MAX_PROCESSES - 1].next = 0;
+
+    pcb_free_list = &Stacks[0];
+}
+
+void q_init(PCB_Q_t *q){
+    q->head = 0;
+    q->tail = 0;
 }

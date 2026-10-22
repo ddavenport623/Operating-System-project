@@ -3,12 +3,18 @@
 #include "stdio.h"
 
 #include "libos.h"
-#include "libos.a"
 #include "helper.c"
 #include "init.h"
 #include "stack.h"
 #include "kernel.h"
 #include "process.h"
+#include "queue.h"
+
+PCB_t * pcb_free_list;
+PCB_t Pcbs [_MAX_PROCESSES];
+Stack_t * Stack_free_list;
+Stack_t Stacks[_MAX_PROCESSES];
+PCB_Q_t Ready_q;
 
 // ARM functions
 int print_progress(unsigned int row,
@@ -28,6 +34,7 @@ int p4();
 
 int main(){
     init();
+    // STOPPED HERE
 
     int retval = spawn_process(p1);
     if (!isZero(retval)){

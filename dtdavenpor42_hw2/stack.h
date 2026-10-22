@@ -1,7 +1,9 @@
+#pragma once
+
 #include <stdint.h>
 #include <stdalign.h>
-#include "kernel.h"
-#include "init.h"
+
+#define _STACK_SIZE 1024
 
 struct Stack
 {
@@ -10,8 +12,5 @@ struct Stack
 };
 
 typedef struct Stack Stack_t;
-Stack_t Stacks[_MAX_PROCESSES];
-
-Stack_t * Stack_free_list;
 
 uint64_t* Stack_alloc();

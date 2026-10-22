@@ -50,7 +50,7 @@ el1_entry:
 	mov sp, #0x07FFFFF0
     //ldr x0, =vector_table
     //msr vbar_el1, x0 
-    bl uart_init
-    bl lfb_init
+    //bl uart_init
+    //bl lfb_init
 	bl	main
 	b 	proc_hang		// should never come here

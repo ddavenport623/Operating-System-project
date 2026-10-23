@@ -25,7 +25,7 @@ int spawn_process(int (*code_address) ()){
     // loop i from 0 to 32 (inclusive)
     //     decrement sp  // sp should be a pointer to a uint64_t
     //     set the uint64_t at which sp points to 0
-    for (int i=0; i <= 32; i++){
+    for (int i=0; i < 32; i++){
         sp--;
         *sp = 0;
     }

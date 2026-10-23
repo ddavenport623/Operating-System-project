@@ -7,7 +7,7 @@ ASFLAGS = -g -MMD
 LDFLAGS = -g -N -Ttext=0x10000
 
 # Object files
-OBJ     = kernel.o boot.o progress.o process_asm.o init.o pcb.o stack.o queue.o process.o helper.o
+OBJ     = boot.o kernel.o progress.o process_asm.o init.o pcb.o stack.o queue.o process.o helper.o
 DEPS    = $(OBJ:.o=.d)
 
 .PHONY: all clean run debug

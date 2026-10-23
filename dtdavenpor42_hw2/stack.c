@@ -7,5 +7,5 @@ Stack_t* Stack_alloc(){
     }
     Stack_t *val = Stack_free_list;
     Stack_free_list = Stack_free_list->next;
-    return (uint64_t *)val;
+    return val;
 }

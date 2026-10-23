@@ -13,7 +13,7 @@
 PCB_t * pcb_free_list;
 PCB_t Pcbs [_MAX_PROCESSES];
 Stack_t * Stack_free_list;
-Stack_t Stacks[_MAX_PROCESSES];
+alignas(16) Stack_t Stacks[_MAX_PROCESSES];
 PCB_Q_t Ready_q;
 uint64_t next_pid = 0;
 PCB_t* Running;

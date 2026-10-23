@@ -22,3 +22,8 @@ PCB_t *q_dequeue(PCB_Q_t *q){
     }
     return retval;
 }
+
+void q_init(PCB_Q_t *q){
+    q->head = 0;
+    q->tail = 0;
+}

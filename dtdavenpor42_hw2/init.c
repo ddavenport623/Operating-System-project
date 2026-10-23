@@ -51,8 +51,3 @@ void init_stack_heap(){
 
     Stack_free_list = &Stacks[0];
 }
-
-void q_init(PCB_Q_t *q){
-    q->head = 0;
-    q->tail = 0;
-}

@@ -1,22 +1,22 @@
 #include "queue.h"
 
 void q_enqueue(PCB_Q_t *q, PCB_t *pcb){
-    if (q->head == NULL){
+    if (q->head == 0){
         q->head = pcb;
         q->tail = pcb;
         return;
     }
     q->tail->pcb = pcb;
     q->tail = q->tail->pcb;
-    q->tail->pcb = NULL;
+    q->tail->pcb = 0;
 }
 
 PCB_t *q_dequeue(PCB_Q_t *q){
-    if (q->head == NULL) return NULL;
+    if (q->head == 0) return 0;
     PCB_t* retval = q->head;
-    if (q->head->pcb == NULL){
-        q->head = NULL;
-        q->tail = NULL;
+    if (q->head->pcb == 0){
+        q->head = 0;
+        q->tail = 0;
     } else {
         q->head = q->head->pcb;
     }

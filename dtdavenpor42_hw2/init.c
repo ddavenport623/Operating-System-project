@@ -3,14 +3,14 @@
 // all initialization functions
 
 void init(){
-    uart_init(); // CONFIRM LIBRARY WORKS
-    lfb_init(); // CONFIRM LIBRARY WORKS
+    uart_init();
+    lfb_init();
     boot_win();
 
     // Console
     print_progress(19, 33, "Console: ", 100, 10); // Console 100%
     waitSec(1);
-    print_to(13, 34, "OK"); // Change to [OK] Console
+    print_to(13, 34, "OK]"); // Change to [OK] Console
 
     // Memory
     print_progress(19, 33, "Memory: ", 0, 10); // Memory 0%
@@ -20,7 +20,7 @@ void init(){
     waitSec(1);
     init_stack_heap();
     print_progress(19, 33, "Memory: ", 100, 10); // Memory 100%
-    print_to(14, 34, "OK"); // Change to [OK] Memory
+    print_to(14, 34, "OK]"); // Change to [OK] Memory
     
     // Kernel
     print_progress(19, 33, "Kernel: ", 0, 10); // Kernel 0%
@@ -28,7 +28,7 @@ void init(){
     q_init(&Ready_q); // Need to write
     print_progress(19, 33, "Kernel: ", 100, 10); // Kernel 100%
     waitSec(1);
-    print_to(15, 34, "OK"); // Change to [OK] Memory
+    print_to(15, 34, "OK]"); // Change to [OK] Memory
 
     return;
 }

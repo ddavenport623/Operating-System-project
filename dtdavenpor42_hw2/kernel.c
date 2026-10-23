@@ -3,7 +3,7 @@
 #include "stdio.h"
 
 #include "libos.h"
-#include "helper.c"
+#include "helper.h"
 #include "init.h"
 #include "stack.h"
 #include "kernel.h"

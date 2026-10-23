@@ -21,7 +21,6 @@ void init(){
     init_stack_heap();
     print_progress(19, 33, "Memory:  ", 100, 10); // Memory 100%
     waitSec(1);
-    waitSec(4); // For testing
     print_to(14, 34, "OK]"); // Change to [OK] Memory
     
     // Kernel

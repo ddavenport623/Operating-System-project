@@ -3,15 +3,11 @@
 // all initialization functions
 
 void init(){
+    uart_init(); // CONFIRM LIBRARY WORKS
+    lfb_init(); // CONFIRM LIBRARY WORKS
     boot_win();
 
     // Console
-    print_progress(19, 33, "Console: ", 0, 10);  // Console 0%
-    waitSec(1);
-    uart_init(); // CONFIRM LIBRARY WORKS
-    print_progress(19, 33, "Console: ", 50, 10); // Console 50%
-    waitSec(1);
-    lfb_init(); // CONFIRM LIBRARY WORKS
     print_progress(19, 33, "Console: ", 100, 10); // Console 100%
     waitSec(1);
     print_to(13, 34, "OK"); // Change to [OK] Console

@@ -13,4 +13,4 @@ struct Stack
     alignas(16) uint64_t stack [_STACK_SIZE];
 };
 
-uint64_t* Stack_alloc();
+Stack_t* Stack_alloc();

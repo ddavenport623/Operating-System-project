@@ -1,4 +1,6 @@
 #include "helper.h"
+#include "libos.h"
+
 
 // Converts seconds to microseconds
 void waitSec(int sec){

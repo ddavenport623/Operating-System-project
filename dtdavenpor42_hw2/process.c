@@ -46,7 +46,7 @@ int spawn_process(int (*code_address) ()){
     pcb->pid = next_pid;
     next_pid++;
     // set the corresponding members in the pcb to the function and address of stack structure
-    pcb->fun = (void (*)())code_address;
+    pcb->fun = code_address;
     pcb->procStack = stackobj;
     // enqueue the pcb (it pointer) onto the Ready_q  // Ready_q should be a global
     q_enqueue(&Ready_q, pcb);

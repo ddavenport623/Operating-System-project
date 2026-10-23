@@ -13,20 +13,20 @@ void init(){
     print_to(13, 34, "OK]"); // Change to [OK] Console
 
     // Memory
-    print_progress(19, 33, "Memory: ", 0, 10); // Memory 0%
+    print_progress(19, 33, "Memory:  ", 0, 10); // Memory 0%
     waitSec(1);
     init_pcb_heap();
-    print_progress(19, 33, "Memory: ", 50, 10); // Memory 50%
+    print_progress(19, 33, "Memory:  ", 50, 10); // Memory 50%
     waitSec(1);
     init_stack_heap();
-    print_progress(19, 33, "Memory: ", 100, 10); // Memory 100%
+    print_progress(19, 33, "Memory:  ", 100, 10); // Memory 100%
     print_to(14, 34, "OK]"); // Change to [OK] Memory
     
     // Kernel
-    print_progress(19, 33, "Kernel: ", 0, 10); // Kernel 0%
+    print_progress(19, 33, "Kernel:  ", 0, 10); // Kernel 0%
     waitSec(1);
     q_init(&Ready_q); // Need to write
-    print_progress(19, 33, "Kernel: ", 100, 10); // Kernel 100%
+    print_progress(19, 33, "Kernel:  ", 100, 10); // Kernel 100%
     waitSec(1);
     print_to(15, 34, "OK]"); // Change to [OK] Memory
 

@@ -15,3 +15,12 @@ extern Stack_t Stacks[_MAX_PROCESSES];
 extern PCB_Q_t Ready_q;
 extern uint64_t next_pid;
 extern PCB_t* Running;
+
+// Function prototypes
+void boot_win();
+int strlen(const char *);
+void ready_to_run();
+int p1();
+int p2();
+int p3();
+int p4();

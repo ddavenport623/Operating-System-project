@@ -1,4 +1,5 @@
 #include "stack.h"
+#include "kernel.h"
 
 uint64_t* Stack_alloc(){
     if (Stack_free_list == NULL){

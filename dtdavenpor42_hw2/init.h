@@ -3,6 +3,8 @@
 #include "kernel.h"
 #include "pcb.h"
 #include "queue.h"
+#include "helper.h"
+#include "libos.h"
 
 void init();
 // pcb

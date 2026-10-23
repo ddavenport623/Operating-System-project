@@ -27,15 +27,6 @@ int print_progress(unsigned int row,
 void restore_context();
 void dispatch();
 
-// Function prototypes
-void boot_win();
-int strlen(const char *);
-void ready_to_run();
-int p1();
-int p2();
-int p3();
-int p4();
-
 int main(){
     init();
 

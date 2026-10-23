@@ -2,7 +2,6 @@
 
 #include <stdint.h>
 #include "stack.h"
-#include "kernel.h"
 #include "ctype.h"
 
 typedef struct PCB PCB_t;

@@ -2,7 +2,7 @@
 CC      = aarch64-linux-gnu-gcc
 LD      = aarch64-linux-gnu-ld
 
-CFLAGS  = -g -pedantic -Wall -Wextra -fPIC -std=gnu2x -MMD
+CFLAGS  = -g -pedantic -Wall -Wextra -fPIC -std=gnu2x -MMD -fno-builtin-strlen
 ASFLAGS = -g -MMD
 LDFLAGS = -g -N -Ttext=0x10000
 

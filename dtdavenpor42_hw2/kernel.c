@@ -24,6 +24,8 @@ int print_progress(unsigned int row,
                    const char *message,
                    unsigned int percent,
                    unsigned int width);
+void restore_context();
+void dispatch();
 
 // Function prototypes
 void boot_win();

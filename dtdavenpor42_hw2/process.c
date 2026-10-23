@@ -6,7 +6,7 @@ int spawn_process(int (*code_address) ()){
 
     // check to make sure stackobj is not null
 		// (if it is, return -1)
-    if (stackobj == NULL) return -1;
+    if (stackobj == 0) return -1;
     
     // set stackptr to stackobj->stack
     uint64_t* stackptr = stackobj->stack;
@@ -38,7 +38,7 @@ int spawn_process(int (*code_address) ()){
     // set pcb to the return value of Pcb_alloc() to allocate a pcb for the process
     PCB_t* pcb = Pcb_alloc();
 	// check the pcb and if is null then return -1
-    if (pcb == NULL) return -1;
+    if (pcb == 0) return -1;
     // set the pcb's sp member to sp.
     pcb->sp = sp;
     // set the pcb's pid member to next_pid
@@ -63,7 +63,7 @@ void ready_to_run(){
     // Note: You should put some error code here that
     //       checked if you are dequeuing from a 
     //       empty queue
-    if (Ready_q.head == NULL) return;
+    if (Ready_q.head == 0) return;
 
     // set Running to the return value from dequeuing from Ready_q
     Running = q_dequeue(&Ready_q);

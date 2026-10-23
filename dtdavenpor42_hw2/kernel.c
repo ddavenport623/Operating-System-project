@@ -66,7 +66,7 @@ void boot_win() {
 }
 
 int strlen(const char *s){
-    if(s == NULL){ // Invalid string
+    if(s == 0){ // Invalid string
         return -1;
     }
     

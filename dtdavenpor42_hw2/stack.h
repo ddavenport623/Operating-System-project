@@ -2,6 +2,7 @@
 
 #include <stdint.h>
 #include <stdalign.h>
+#include "kernel.h"
 
 #define _STACK_SIZE 1024
 

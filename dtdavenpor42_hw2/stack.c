@@ -2,10 +2,10 @@
 #include "kernel.h"
 
 uint64_t* Stack_alloc(){
-    if (Stack_free_list == NULL){
+    if (Stack_free_list == 0){
         return 0;
     }
     Stack_t *val = Stack_free_list;
     Stack_free_list = Stack_free_list->next;
-    return val;
+    return (uint64_t *)val;
 }

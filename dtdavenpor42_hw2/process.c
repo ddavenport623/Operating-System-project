@@ -2,7 +2,7 @@
 
 int spawn_process(int (*code_address) ()){
     // set stackobj to return value of calling Stack_alloc() to allocate a stack
-    Stack_t *stackobj = Stack_alloc();
+    Stack_t *stackobj = (Stack_t *)Stack_alloc();
 
     // check to make sure stackobj is not null
 		// (if it is, return -1)

@@ -63,7 +63,7 @@ void ready_to_run(){
     // Note: You should put some error code here that
     //       checked if you are dequeuing from a 
     //       empty queue
-    if (Ready_q->head == NULL) return -1;
+    if (Ready_q.head == NULL) return;
 
     // set Running to the return value from dequeuing from Ready_q
     Running = q_dequeue(&Ready_q);

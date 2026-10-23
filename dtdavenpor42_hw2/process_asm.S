@@ -1,4 +1,5 @@
 .global restore_context
+.global dispatch
 
 dispatch:
     stp x29, x30, [sp, #-16]!     /* must store these two register before call*/

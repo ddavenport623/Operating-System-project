@@ -1,4 +1,3 @@
-#include "stdbool.h"
 #include "helper.h"
 
 // Converts seconds to microseconds

@@ -13,3 +13,9 @@ void init_pcb_heap();
 void init_stack_heap();
 // queue
 void q_init(PCB_Q_t *q);
+
+int print_progress(unsigned int row,
+                   unsigned int column,
+                   const char *message,
+                   unsigned int percent,
+                   unsigned int width);

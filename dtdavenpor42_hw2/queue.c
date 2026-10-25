@@ -1,6 +1,7 @@
 #include "queue.h"
 
 void q_enqueue(PCB_Q_t *q, PCB_t *pcb){
+    if (pcb == 0) return;
     if (q->head == 0){
         q->head = pcb;
         q->tail = pcb;

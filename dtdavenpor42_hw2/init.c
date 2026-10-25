@@ -26,7 +26,7 @@ void init(){
     // Kernel
     print_progress(19, 33, "Kernel:  ", 0, 10); // Kernel 0%
     waitSec(1);
-    q_init(&Ready_q); // Need to write
+    q_init(&Ready_q);
     print_progress(19, 33, "Kernel:  ", 100, 10); // Kernel 100%
     waitSec(1);
     print_to(15, 34, "OK]"); // Change to [OK] Memory

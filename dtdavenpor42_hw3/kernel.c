@@ -89,7 +89,6 @@ int strlen(const char *s){
 int p1(){
     // print the message "Process 1: " at row 11, three spaces left of the boot_win() box
     print_to(11, 1, "Process 1: ");
-    while (true) {} // TESTING REMOVE LATER
     // loop infinitely
     while (true){
         // loop i from 0 to 9

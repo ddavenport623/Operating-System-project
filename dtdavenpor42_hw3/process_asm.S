@@ -26,8 +26,7 @@ save_rest_of_context:
     //     PSTATE
     // */
 
-    // save x1 Temporarily so we can use it to reference the process stack.  We will
-    // save x1 on the process stack in a moment.
+    // save x1 Temporarily so we can use it to reference the process stack.  We will save x1 on the process stack in a moment.
     stp xzr, x1, [sp, -16]!
 
     // load the process stack pointer
@@ -85,9 +84,6 @@ save_rest_of_context:
     mrs     x0, ELR_EL1 // load x0 with the interrupt return address (in ELR_EL1)
     str     x0, [x1, #(16*15)] // store the interrupt return address in the process' stack
 
-    // Store sp into the PCB
-    // /* How? Move sp into a register, say x0.
-    // mov x0, sp
     //     Then load a register with the address of Running, say x1.
     adr x0, Running
     //     Next, load a register with the address of the PCB (its in x1)
@@ -149,41 +145,6 @@ restore_context:
     msr     DAIFClr, #0x2       // Clear IRQ disable flag
     eret
 
-    // 2) restore the PSTATE stored in the stack
-    //     /* note: the PSTATE is stored in the stack at 16*14+8 from the top of the stack.
-    // ldr x0, [sp, #(16*14+8)]
-    //         So, load it into x0, and then do the following:
-    // msr  SPSR_EL1, x0 
-
-    // 3) copy all register values for x0-x30 from the stack at which sp 
-    //     points into those registers.
-    //     /* note: x0 is at sp, x1 is at sp+8 ..., and x28 is at 16*14, 
-    //     but x29 and x30 are at 16*15 (because STATE was stored at 16*14+8)
-    //     use ldp when you can (you have to use ldr to load x28) to load pairs 
-    //     for speed */
-    // ldp x2, x3, [sp, #(16*1)]
-    // ldp x0, x1, [sp, #(16*0)]
-    // ldp x4, x5, [sp, #(16*2)]
-    // ldp x6, x7, [sp, #(16*3)]
-    // ldp x8, x9, [sp, #(16*4)]
-    // ldp x10, x11, [sp, #(16*5)]
-    // ldp x12, x13, [sp, #(16*6)]
-    // ldp x14, x15, [sp, #(16*7)]
-    // ldp x16, x17, [sp, #(16*8)]
-    // ldp x18, x19, [sp, #(16*9)]
-    // ldp x20, x21, [sp, #(16*10)]
-    // ldp x22, x23, [sp, #(16*11)]
-    // ldp x24, x25, [sp, #(16*12)]
-    // ldp x26, x27, [sp, #(16*13)]
-    // ldr x28, [sp, #(16*14)]
-    // ldp x29, x30, [sp, #(16*15)]
-
-    // 4) add 16*16 to sp to pop the processor context from the stack
-    // add sp, sp, #(16*16)
-
-    // 5) ret
-    // ret
-
 setup_EVT:
 	// set up the exception vector table
     adr     x0, vector_table 
@@ -212,6 +173,7 @@ clear_timer:
     msr     CNTV_TVAL_EL0, x0
     ret
 
+.balign 2048
 vector_table:
     .balign 128
         b unsupported

@@ -5,6 +5,7 @@
 #include "queue.h"
 #include "helper.h"
 #include "libos.h"
+#include "process.h"
 
 void init();
 // pcb

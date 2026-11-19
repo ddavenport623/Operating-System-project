@@ -27,26 +27,33 @@ int print_progress(unsigned int row,
 void restore_context();
 void dispatch();
 
+// int main2(){
+//     init();
+
+//     int retval = spawn_process(p1);
+//     if (!isZero(retval)){
+//         return -1;
+//     }
+//     retval = spawn_process(p2);
+//     if (!isZero(retval)){
+//         return -1;
+//     }
+//     retval = spawn_process(p3);
+//     if (!isZero(retval)){
+//         return -1;
+//     }
+//     retval = spawn_process(p4);
+//     if (!isZero(retval)){
+//         return -1;
+//     }
+
+//     ready_to_run();
+//     restore_context();
+// }
+
 int main(){
+    // TODO maybe clear screen, but might be unnecessary
     init();
-
-    int retval = spawn_process(p1);
-    if (!isZero(retval)){
-        return -1;
-    }
-    retval = spawn_process(p2);
-    if (!isZero(retval)){
-        return -1;
-    }
-    retval = spawn_process(p3);
-    if (!isZero(retval)){
-        return -1;
-    }
-    retval = spawn_process(p4);
-    if (!isZero(retval)){
-        return -1;
-    }
-
     ready_to_run();
     restore_context();
 }
@@ -89,8 +96,6 @@ int p1(){
             // use putc_to to print the character i immediately after the ": " in the above message 
             // convert i to a character by adding ' ' (a spaced) to it: i + ' '
             putc_to(11, 12, i + '0');
-            // call dispatch()
-            dispatch();
         }
     }
 }
@@ -109,8 +114,6 @@ int p2(){
             // use putc_to to print the character i immediately after the ": " in the above message 
             // convert i to a character by adding ' ' (a spaced) to it: i + ' '
             putc_to(13, 12, i + '0');
-            // call dispatch()
-            dispatch();
         }
     }
 }
@@ -129,8 +132,6 @@ int p3(){
             // use putc_to to print the character i immediately after the ": " in the above message 
             // convert i to a character by adding ' ' (a spaced) to it: i + ' '
             putc_to(11, 27, i + '0');
-            // call dispatch()
-            dispatch();
         }
     }
 }
@@ -149,8 +150,11 @@ int p4(){
             // use putc_to to print the character i immediately after the ": " in the above message 
             // convert i to a character by adding ' ' (a spaced) to it: i + ' '
             putc_to(13, 27, i + '0');
-            // call dispatch()
-            dispatch();
         }
     }
+}
+
+void unsupported(){
+    print_to(0, 0, "Error: unsupported exception!");
+    while(true){}
 }

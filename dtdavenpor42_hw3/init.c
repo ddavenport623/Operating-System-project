@@ -1,5 +1,9 @@
 #include "init.h"
 
+void setup_EVT();
+void init_timer();
+void clear_timer();
+
 // all initialization functions
 
 void init(){
@@ -30,6 +34,45 @@ void init(){
     print_progress(19, 33, "Kernel:  ", 100, 10); // Kernel 100%
     waitSec(1);
     print_to(15, 34, "OK]"); // Change to [OK] Memory
+
+    // Interrupts
+    print_progress(19, 33, "Interrupts:  ", 0, 10); // Interrupts 0%
+    waitSec(1);
+    setup_EVT();
+    print_progress(19, 33, "Interrupts:  ", 50, 10); // Interrupts 50%
+    waitSec(1);
+    init_timer();
+    print_progress(19, 33, "Interrupts:  ", 100, 10); // Interrupts 100%
+    waitSec(1);
+    print_to(16, 34, "OK]"); // Change to [OK] Interrupts
+
+    print_progress(19, 33, "Processes:  ", 0, 10); // Processes 0%
+    waitSec(1);
+    int retval = spawn_process(p1);
+    if (!isZero(retval)){
+        while (true) {}
+    }
+    print_progress(19, 33, "Processes:  ", 25, 10); // Processes 25%
+    waitSec(1);
+    retval = spawn_process(p2);
+    if (!isZero(retval)){
+        while (true) {}
+    }
+    print_progress(19, 33, "Processes:  ", 50, 10); // Processes 50%
+    waitSec(1);
+    retval = spawn_process(p3);
+    if (!isZero(retval)){
+        while (true) {}
+    }
+    print_progress(19, 33, "Processes:  ", 75, 10); // Processes 75%
+    waitSec(1);
+    retval = spawn_process(p4);
+    if (!isZero(retval)){
+        while (true) {}
+    }
+    print_progress(19, 33, "Processes:  ", 100, 10); // Processes 100%
+    waitSec(1);
+    print_to(17, 34, "OK]"); // Change to [OK] Processes
 
     return;
 }

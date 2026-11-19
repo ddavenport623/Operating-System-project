@@ -32,7 +32,7 @@ int spawn_process(int (*code_address) ()){
 
     // set the value at which sp+31 points to code_address 
     // Note: type cast code_address to a uint64_t so that the compiler does not complain)
-    *(sp + 31) = (uint64_t)code_address;
+    *(sp + 30) = (uint64_t)code_address;
 
     // Note: you will have to declare pcb to be of type PCB_t for the following code
     // set pcb to the return value of Pcb_alloc() to allocate a pcb for the process
